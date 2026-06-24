@@ -38,21 +38,25 @@ class AutoWidescreenManager : Disposable {
         val height = frame.height
         val uiSettings = UISettings.getInstance()
         
+        val aspect = if (height > 0) width.toDouble() / height.toDouble() else 1.0
         val shouldBeWidescreen = if (settings.triggerMode == "ASPECT") {
-            val aspect = if (height > 0) width.toDouble() / height.toDouble() else 1.0
             aspect >= settings.aspectRatioThreshold
         } else {
             width >= settings.threshold
         }
 
+        LOG.info("AutoWidescreen - checkAndApply: width=$width, height=$height, aspect=$aspect, threshold=${settings.aspectRatioThreshold}, triggerMode=${settings.triggerMode}, shouldBeWidescreen=$shouldBeWidescreen, currentSupport=${uiSettings.wideScreenSupport}")
+
         // Only update and fire event if value changes
         if (uiSettings.wideScreenSupport != shouldBeWidescreen) {
+            LOG.info("AutoWidescreen - Toggling wideScreenSupport from ${uiSettings.wideScreenSupport} to $shouldBeWidescreen")
             uiSettings.wideScreenSupport = shouldBeWidescreen
             ApplicationManager.getApplication().invokeLater {
                 uiSettings.fireUISettingsChanged()
             }
         }
     }
+
 
     fun updateAllProjects() {
         for (listener in listeners.values) {
@@ -78,6 +82,8 @@ class AutoWidescreenManager : Disposable {
     }
 
     companion object {
+        val LOG = com.intellij.openapi.diagnostic.Logger.getInstance(AutoWidescreenManager::class.java)
+
         val instance: AutoWidescreenManager
             get() = ApplicationManager.getApplication().getService(AutoWidescreenManager::class.java)
     }

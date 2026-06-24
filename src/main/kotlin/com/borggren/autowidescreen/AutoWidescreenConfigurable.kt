@@ -214,6 +214,6 @@ class AutoWidescreenSettingsComponent {
     var aspectRatioValue: Double
         get() = aspectSlider.value / 100.0
         set(newValue) {
-            aspectSlider.value = (newValue * 100.0).toInt().coerceIn(100, 300)
+            aspectSlider.value = java.lang.Math.round(newValue * 100.0).toInt().coerceIn(100, 300)
         }
 }
