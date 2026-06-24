@@ -36,6 +36,17 @@ class AutoWidescreenConfigurable : Configurable {
         settings.triggerMode = mySettingsComponent!!.triggerModeValue
         settings.aspectRatioThreshold = mySettingsComponent!!.aspectRatioValue
 
+        // Self-heal: register active project frame if not registered yet
+        val activeFrame = WindowManager.getInstance().findVisibleFrame()
+        if (activeFrame != null) {
+            val project = com.intellij.openapi.project.ProjectManager.getInstance().openProjects.find {
+                WindowManager.getInstance().getFrame(it) == activeFrame
+            }
+            if (project != null) {
+                AutoWidescreenManager.instance.registerFrame(project, activeFrame)
+            }
+        }
+
         // Trigger updates across all active projects
         AutoWidescreenManager.instance.updateAllProjects()
     }
