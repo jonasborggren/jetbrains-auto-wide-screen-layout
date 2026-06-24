@@ -80,6 +80,7 @@ class AutoWidescreenSettingsComponent {
     private val aspectLabel = JBLabel("Aspect ratio threshold: 1.77 (~16:9 Widescreen)")
     
     private val currentSizeLabel = JBLabel("Current IDE window: Calculating...")
+    private val setCurrentWindowButton = JButton("Set to current window")
 
     init {
         modeButtonGroup.add(widthModeRadioButton)
@@ -116,6 +117,22 @@ class AutoWidescreenSettingsComponent {
                 aspectLabel.text = "Aspect ratio threshold: $formatted${getAspectRatioDescription(aspectValue)}"
             }
         })
+
+        // Set to current window button action
+        setCurrentWindowButton.addActionListener {
+            val activeFrame = WindowManager.getInstance().findVisibleFrame()
+            if (activeFrame != null) {
+                val w = activeFrame.width
+                val h = activeFrame.height
+                
+                // Update width slider
+                thresholdSlider.value = w.coerceIn(800, 3840)
+                
+                // Update aspect ratio slider
+                val ratio = if (h > 0) w.toDouble() / h.toDouble() else 1.0
+                aspectSlider.value = java.lang.Math.round(ratio * 100.0).toInt().coerceIn(100, 300)
+            }
+        }
 
         // Interactive enabling/disabling of controls
         val stateListener = ActionListener { updateEnabledStates() }
@@ -154,6 +171,8 @@ class AutoWidescreenSettingsComponent {
             .addSeparator()
             .addVerticalGap(5)
             .addComponent(currentSizeLabel)
+            .addVerticalGap(5)
+            .addComponent(setCurrentWindowButton)
             .addComponentFillVertically(JPanel(), 0)
             .panel
 
@@ -177,6 +196,7 @@ class AutoWidescreenSettingsComponent {
         val pluginEnabled = enabledCheckBox.isSelected
         widthModeRadioButton.isEnabled = pluginEnabled
         aspectModeRadioButton.isEnabled = pluginEnabled
+        setCurrentWindowButton.isEnabled = pluginEnabled
 
         val widthMode = widthModeRadioButton.isSelected && pluginEnabled
         thresholdLabel.isEnabled = widthMode
