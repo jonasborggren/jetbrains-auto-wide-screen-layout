@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>com.borggren.autowidescreen</id>
+    <name>Auto Widescreen Layout</name>
+    <vendor email="borggren@example.com" url="https://github.com/borggren/jetbrains-auto-wide-screen-layout">Borggren</vendor>
+
+    <description><![CDATA[
+    Automatically toggles the 'Widescreen Tool Window Layout' option depending on whether the IDE window itself is wide.<br/>
+    Provides a configurable pixel threshold setting (e.g. 1920px) under Settings > Appearance & Behavior > Auto Widescreen Layout.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Settings Persistence -->
+        <applicationService serviceImplementation="com.borggren.autowidescreen.AutoWidescreenSettings"/>
+        <!-- Window Resize Manager -->
+        <applicationService serviceImplementation="com.borggren.autowidescreen.AutoWidescreenManager"/>
+        
+        <!-- Configurable Settings Page under Appearance & Behavior -->
+        <applicationConfigurable
+                parentId="appearance"
+                instance="com.borggren.autowidescreen.AutoWidescreenConfigurable"
+                id="com.borggren.autowidescreen.AutoWidescreenConfigurable"
+                displayName="Auto Widescreen Layout"/>
+                
+        <!-- Hook onto Project Open -->
+        <postStartupActivity implementation="com.borggren.autowidescreen.AutoWidescreenProjectActivity"/>
+    </extensions>
+
+    <projectListeners>
+        <!-- Hook onto Project Close to clean up window listeners -->
+        <listener class="com.borggren.autowidescreen.AutoWidescreenProjectCloseListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </projectListeners>
+</idea-plugin>
