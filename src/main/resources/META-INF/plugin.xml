@@ -4,8 +4,15 @@
     <vendor email="borggren@example.com" url="https://github.com/borggren/jetbrains-auto-wide-screen-layout">Borggren</vendor>
 
     <description><![CDATA[
-    Automatically toggles the 'Widescreen Tool Window Layout' option depending on whether the IDE window itself is wide.<br/>
-    Provides a configurable pixel threshold setting (e.g. 1920px) under Settings > Appearance & Behavior > Auto Widescreen Layout.
+    <p>Automatically toggles the IDE's built-in <strong>Widescreen Tool Window Layout</strong> setting based on your current window size.</p>
+    <p>Perfect for ultrawide monitors, multi-monitor setups, or developers who frequently resize their IDE window and want their tool windows to dynamically rearrange for optimal space utilization.</p>
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li><strong>Automatic Layout Toggling</strong>: Swishes vertical tool windows to full-height and constrains bottom tool windows to editor width dynamically.</li>
+      <li><strong>Dual Trigger Modes</strong>: Choose between pixel-width threshold (e.g. 1920px) or aspect ratio threshold (e.g. 1.78 for 16:9 widescreen, 2.33 for 21:9 ultrawide).</li>
+      <li><strong>Interactive Settings</strong>: Access settings easily under <em>Settings > Appearance & Behavior > Auto Widescreen Layout</em>. Features live window size display and a "Set to current window" helper button.</li>
+    </ul>
+    <p>For more details, visit the <a href="https://github.com/borggren/jetbrains-auto-wide-screen-layout">GitHub project page</a>.</p>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>

@@ -29,8 +29,7 @@ intellijPlatform {
         id.set("com.borggren.autowidescreen")
         name.set("Auto Widescreen Layout")
         version.set("1.0.0")
-        
-        description.set("Automatically toggles the 'Widescreen Tool Window Layout' option depending on whether the IDE window itself is wide.")
+
         
         vendor {
             name.set("Borggren")
