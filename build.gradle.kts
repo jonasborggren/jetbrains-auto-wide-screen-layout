@@ -3,8 +3,11 @@ plugins {
     kotlin("jvm") version "2.0.0"
 }
 
+val gitTag = System.getenv("GITHUB_REF_NAME") ?: ""
+val projectVersion = if (gitTag.startsWith("v")) gitTag.substring(1) else "1.0.0"
+
 group = "com.borggren"
-version = "1.0.0"
+version = projectVersion
 
 kotlin {
     jvmToolchain(21)
@@ -28,7 +31,7 @@ intellijPlatform {
     pluginConfiguration {
         id.set("com.borggren.autowidescreen")
         name.set("Auto Widescreen Layout")
-        version.set("1.0.0")
+        version.set(projectVersion)
 
         
         vendor {
