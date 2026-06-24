@@ -1,5 +1,8 @@
 # Auto Widescreen Layout Plugin
 
+[![JetBrains Plugins](https://img.shields.io/jetbrains/plugin/v/32450-auto-widescreen-layout.svg)](https://plugins.jetbrains.com/plugin/32450-auto-widescreen-layout)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/32450-auto-widescreen-layout.svg)](https://plugins.jetbrains.com/plugin/32450-auto-widescreen-layout)
+
 An IntelliJ Platform plugin that automatically toggles the built-in **"Widescreen tool window layout"** setting depending on whether the IDE window itself is wide. 
 
 Perfect for ultrawide monitors, multi-monitor setups, or developers who frequently resize their IDE window and want their tool windows (such as the Project view, Terminal, and Run windows) to dynamically rearrange for optimal space utilization.
