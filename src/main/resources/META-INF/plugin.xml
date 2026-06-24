@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.borggren.autowidescreen</id>
     <name>Auto Widescreen Layout</name>
-    <vendor email="borggren@example.com" url="https://github.com/borggren/jetbrains-auto-wide-screen-layout">Borggren</vendor>
+    <vendor email="borggren@example.com" url="https://github.com/jonasborggren/jetbrains-auto-wide-screen-layout">Borggren</vendor>
 
     <description><![CDATA[
     <p>Automatically toggles the IDE's built-in <strong>Widescreen Tool Window Layout</strong> setting based on your current window size.</p>
@@ -12,7 +12,7 @@
       <li><strong>Dual Trigger Modes</strong>: Choose between pixel-width threshold (e.g. 1920px) or aspect ratio threshold (e.g. 1.78 for 16:9 widescreen, 2.33 for 21:9 ultrawide).</li>
       <li><strong>Interactive Settings</strong>: Access settings easily under <em>Settings > Appearance & Behavior > Auto Widescreen Layout</em>. Features live window size display and a "Set to current window" helper button.</li>
     </ul>
-    <p>For more details, visit the <a href="https://github.com/borggren/jetbrains-auto-wide-screen-layout">GitHub project page</a>.</p>
+    <p>For more details, visit the <a href="https://github.com/jonasborggren/jetbrains-auto-wide-screen-layout">GitHub project page</a>.</p>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>

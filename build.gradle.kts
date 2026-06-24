@@ -36,7 +36,7 @@ intellijPlatform {
         
         vendor {
             name.set("Borggren")
-            url.set("https://github.com/borggren/jetbrains-auto-wide-screen-layout")
+            url.set("https://github.com/jonasborggren/jetbrains-auto-wide-screen-layout")
         }
 
         ideaVersion {
